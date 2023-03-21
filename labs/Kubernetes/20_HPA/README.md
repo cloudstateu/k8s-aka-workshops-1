@@ -8,6 +8,8 @@
 ## LAB Overview
 
 **IMPORTANT**
+[If you've already installed the metrics-server, you can skip this step]
+
 To see how much resources (CPU, RAM) you are using, you need to install metrics-server. Now in case of verifying some metrics you should see `error: Metrics API not available`. 
 
 metric-server runs a single Pod, that fetch metrics from all our Nodes. 

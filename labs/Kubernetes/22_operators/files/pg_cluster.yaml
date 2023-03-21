@@ -8,8 +8,8 @@ spec:
     size: 1Gi
   numberOfInstances: 2
   users:
-    # database owner
-    chmuro:
+    # database owner  [same as in databases section]
+    my_user:
     - superuser
     - createdb
 
@@ -18,6 +18,6 @@ spec:
 
   #databases: name->owner
   databases:
-    DB_NAME: chmuro
+    my_db_name: my_user # [same ase in users section, my_db_name - your db name]
   postgresql:
     version: "14"

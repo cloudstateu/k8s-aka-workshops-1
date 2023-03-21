@@ -49,7 +49,11 @@ In this lab, you will learn how to deploy various kubernetes applications using 
 1. At to top bar of UI click *New Cluster* and fill in the form. Set cluster name, 2 instances and you can leave other fields by default. Then click *Create cluster*.
 
 ## Task 3: Create new postgres cluster using YAML definition
-1. Examine the content of "files/pg_cluster.yaml". **Enter database name in line 21.**
+1. Examine the content of "files/pg_cluster.yaml". 
+
+    **Enter database name in line 21 and a username in lines 12 and 21**
+
+
 2. Deploy new cluster:
     
     ```bash

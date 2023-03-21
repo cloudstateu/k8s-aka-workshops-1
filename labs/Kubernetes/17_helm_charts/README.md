@@ -24,10 +24,10 @@
 In this task you are going to create your own helm chart.
 1. Run: `helm create mychart`. This command will create new directory "mychart". Explore the content of "mychart" directory.
 2. Take a look on templating engine. Open `templates/service.yaml` and see how template is defined, how "templates/service.yaml" and "values.yaml" are combined.
-3. Explore what will be the final yaml generated from template: `helm upgrade --install --dry-run --debug --generate-name ./mychart`. This command does a dry-run so in fact nothing happed. You can also run `helm template ./mychart` - this command does the same.
+3. Explore what will be the final yaml generated from template: `helm install --dry-run --debug --generate-name ./mychart`. This command does a dry-run so in fact nothing happed. You can also run `helm template ./mychart` - this command does the same.
 4. Take a look and note which port is defined in resulting Service object.
 5. Open `values.yaml` and change `service.port` field to `81`
-6. Execute `helm upgrade --install --dry-run --debug --generate-name ./mychart` again and see that service port number has changed.
+6. Execute `helm install --dry-run --debug --generate-name ./mychart` again and see that service port number has changed.
 7. Open `values.yaml` and  back `service.port` field to `80`
 
 ## Task 3: Deploy your own helm chart

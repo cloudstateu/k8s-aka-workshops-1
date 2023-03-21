@@ -5,6 +5,16 @@
 
 # Pod's resources management
 
+**IMPORTANT**
+To see how much resources (CPU, RAM) you are using, you need to install metrics-server. Now in case of verifying some metrics you should see `error: Metrics API not available`. 
+
+metric-server runs a single Pod, that fetch metrics from all our Nodes. 
+
+To install metric-server on your cluster run the following command (from files directory):
+```bash
+kubectl apply -f metrics-server.yaml
+```
+
 ## LAB Overview
 
 In this lab, you will learn how to manage the resources allocated to a container running in Pod.
@@ -26,21 +36,12 @@ In this lab, you will learn how to manage the resources allocated to a container
 
 1. To view the currently used resources (CPU and memory) on a Node
 
-    **[it's not applicable on LKS - metrics api is not available]**
+    **[it's not applicable on LKS - metrics api is not available by default]**
     ```bash
     kubectl top nodes
     ```
 
     ![img](img/01-kubectl-top-nodes.svg)
-
-    As an alternative on LKE you can execute:
-
-    ```bash
-    kubectl describe node
-    ```
-    and check the "Allocated resources" section
-
-    ![img](./img/top_nodes_alternative.png)
 
 ## Task 2: Create a Pod with `request` and `limits` defined
 
@@ -68,7 +69,6 @@ In this lab, you will learn how to manage the resources allocated to a container
 
 1. Check the resources used by Pod
 
-    **[it's not applicable on LKS - metrics api is not available]**
     ```bash
     kubectl top pods
     ```
@@ -76,16 +76,6 @@ In this lab, you will learn how to manage the resources allocated to a container
     ![img](./img/04-top-pods.svg)
 
     If Pod does not use any resources yet, wait a while for the stress test to warm up.
-
-    As an alternative on LKE you can execute:
-
-    ```bash
-    kubectl describe node
-    ```
-
-    and find your pod
-
-    ![img](./img/top_nodes_alternative.png)
 
 
 1. Check how information about `requests` and `limits` are displayed in the Pod details
@@ -190,22 +180,11 @@ In this lab, you will learn how to manage the resources allocated to a container
     kubectl create -f pod.yaml
     ```
 
-    **[it's not applicable on LKS - metrics api is not available]**
     ```bash
     kubectl top pods
     ```
 
     ![img](./img/11-limits-second-pod.svg)
-
-    As an alternative on LKE you can execute:
-
-    ```bash
-    kubectl describe node
-    ```
-    
-    and find your pod
-
-    ![img](./img/top_nodes_alternative.png)
 
 1. Check how _Allocated Resources_ section changed
 

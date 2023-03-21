@@ -2,6 +2,18 @@
 
 ## Instalacja nginx-ingress
 
+Zanim zainstalujesz nginx-ingress upewnij się, że na Twoim klastrze nie ma zainstalowanych poniższych komponentów:
+- ingressclass (obiekt nie-namespace'owalny)
+```shell
+kubectl get ingressclass nginx
+```
+- ValidatingWebhookConfiguration (obiekt nie-namespace'owalny)
+```shell
+kubectl get validatingwebhookconfigurations ingress-nginx-admission
+```
+Jeśli ww. obiekty istnieją, to należy je usunąć.
+
+Instalacja nginx:
 ```shell
 kubectl create ns nginx-ingress
 helm repo add nginx-stable https://helm.nginx.com/stable
@@ -13,16 +25,10 @@ Dostosuj adresy IP w konfiguracji obiektów `Ingress`
 
 ```shell
 IP=$(kubectl get svc nginx-ingress-nginx-ingress -n nginx-ingress -o json | jq -j '.status.loadBalancer.ingress[].ip')
-sed -i "s/IP_TO_REPLACE/$IP/g" hipstershop/k8s-manifest.yaml
-sed -i "s/IP_TO_REPLACE/$IP/g" grafana/ingress.yaml
-```
+sed -i "s/IP_TO_REPLACE/$IP/g" grafana/ingress.yaml 
 
-Uruchom [nip.io](https://nip.io/):
-
-```shell
-cd nip.io
-./build_and_run_docker.sh
-cd ..
+[dla użytkowników maca trzeba dodać parametr -e]
+sed -i -e "s/IP_TO_REPLACE/$IP/g" grafana/ingress.yaml
 ```
 
 ## Instalacja Prometheus + Grafana

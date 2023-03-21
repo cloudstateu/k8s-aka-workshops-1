@@ -92,7 +92,7 @@
    touch test.txt
    ```
 
-1. Get details regardin the create volume
+1. Get details regarding created volume
 
     ```bash
     kubectl get pv <PV_NAME> -o yaml

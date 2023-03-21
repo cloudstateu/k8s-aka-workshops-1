@@ -73,6 +73,10 @@ You should get different responses from both services you deployed in task 2.
 
 ## Task 5: Delete everything you created in this lab
 
+1. Delete nginx:
+    ```bash
+    kubectl delete -f https://raw.githubusercontent.com/kubernetes/ingress-nginx/controller-v1.1.1/deploy/static/provider/cloud/deploy.yaml
+    ```
 1. Delete all you created by typing:
     ```bash
     kubectl delete -f .
@@ -81,7 +85,6 @@ You should get different responses from both services you deployed in task 2.
     ```bash
     kubectl delete namespace ingress-nginx
     ```
-
 ## END LAB
 
 <br><br>
